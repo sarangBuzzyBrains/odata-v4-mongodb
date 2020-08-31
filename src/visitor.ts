@@ -1,3 +1,4 @@
+import * as escapeStringRegexp from "escape-string-regexp";
 import { Token } from "odata-v4-parser/lib/lexer";
 import { Literal } from "odata-v4-literal";
 
@@ -220,7 +221,7 @@ export class Visitor{
 		this.Visit(node.value.left, context);
 		this.Visit(node.value.right, context);
 
-		if (context.identifier) context.query[context.identifier] = context.literal;
+		if (context.identifier) context.query[context.identifier] = { $eq: context.literal };
 		delete context.identifier;
 		delete context.literal;
 	}
@@ -280,13 +281,13 @@ export class Visitor{
 		if (context.identifier) {
 			switch (method) {
 				case "contains":
-					context.query[context.identifier] = new RegExp(context.literal, "gi");
+					context.query[context.identifier] = new RegExp(escapeStringRegexp(context.literal), "gi");
 					break;
 				case "endswith":
-					context.query[context.identifier] = new RegExp(context.literal + "$", "gi");
+					context.query[context.identifier] = new RegExp(escapeStringRegexp(context.literal) + "$", "gi");
 					break;
 				case "startswith":
-					context.query[context.identifier] = new RegExp("^" + context.literal, "gi");
+					context.query[context.identifier] = new RegExp("^" + escapeStringRegexp(context.literal), "gi");
 					break;
 				default:
 					throw new Error("Method call not implemented.")
