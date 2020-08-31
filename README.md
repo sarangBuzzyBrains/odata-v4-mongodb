@@ -12,7 +12,7 @@ into MongoDB query objects, that you can execute over a MongoDB database.
 
 ## Usage as server - TypeScript
 ```javascript
-import { createFilter } from 'odata-v4-mongodb'
+import { createFilter } from '@wandererin/odata-v4-mongodb'
 
 //example request:  GET /api/products?$filter=category/id eq 5 or color eq 'Red'
 app.get("/api/products", (req: Request, res: Response) => {
@@ -29,7 +29,7 @@ app.get("/api/products", (req: Request, res: Response) => {
 
 ## Usage ES5
 ```javascript
-var createFilter = require('odata-v4-mongodb').createFilter;
+var createFilter = require('@wandererin/odata-v4-mongodb').createFilter;
 
 app.get("/api/products", function(req, res) {
     var filter = createFilter(req.query.$filter);
@@ -56,6 +56,13 @@ The Connector is supporting basic MongoDB queries.
 
 *We are into creating a comprehensive feature availability chart for V1 release*
 
+    √ expression: $filter=contains(Name,'c')&$orderby=UnitPrice
+    √ expression: $filter=contains(Name,'c')&$orderby=Name
+    √ expression: $filter=contains(Description,'c')&$orderby=Name desc
+
+
+    √ expression: 1 eq 1
+    √ expression: (1 eq 1) or (2 eq 2)
     √ expression 5.1.1.6.1: NullValue eq null
     √ expression 5.1.1.6.1: TrueValue eq true
     √ expression 5.1.1.6.1: FalseValue eq false
@@ -76,3 +83,12 @@ The Connector is supporting basic MongoDB queries.
     √ expression 5.1.1.1.6: A le 2
     √ expression: A/b eq 1
     √ expression 5.1.1.3: (A/b eq 2) or (B/c lt 4) and ((E gt 5) or (E lt -1))
+    √ expression 5.1.1.4.1: contains(A, 'BC')
+    √ expression 5.1.1.4.1: contains(A, '%7C')
+    √ expression 5.1.1.4.1: contains(A, 'BC') or contains(D, 'EF')
+    √ expression 5.1.1.4.2: endswith(A, '%7C')
+    √ expression 5.1.1.4.2: endswith(A, 'CD')
+    √ expression 5.1.1.4.3: startswith(A, 'CD')
+    √ expression 5.1.1.4.3: startswith(A, '%7C')
+    √ expression 5.1.1.1.11: not endswith(Name,'ilk')
+

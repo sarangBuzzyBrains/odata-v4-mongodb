@@ -1,10 +1,11 @@
 {
-  "name": "odata-v4-mongodb",
+  "name": "@wandererin/odata-v4-mongodb",
   "version": "0.1.13",
   "description": "Service OData requests from a MongoDB data store",
   "main": "lib/index.js",
   "typings": "lib/index",
   "directories": {
+    "lib": "lib",
     "test": "test"
   },
   "scripts": {
