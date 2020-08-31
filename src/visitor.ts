@@ -280,6 +280,9 @@ export class Visitor{
 		var params = (node.value.parameters || []).forEach(p => this.Visit(p, context));
 		if (context.identifier) {
 			switch (method) {
+				case "substringof":
+					context.query[context.identifier] = new RegExp(escapeStringRegexp(context.literal), "gi");
+					break;
 				case "contains":
 					context.query[context.identifier] = new RegExp(escapeStringRegexp(context.literal), "gi");
 					break;
