@@ -102,14 +102,14 @@ describe("mongodb visitor", () => {
 	})
 	
 	it("expression  5.1.1.1.6:  A eq 'any'", () => {
-		expect("1/2|2+?.*?(.*)/").to.deep.eql({'A': {$eq: "1/2|2+?.*?(.*)/"}})
+		expect(createFilter(`A eq '${encodeURIComponent('1/2|2+?.*?(.*)/')}'`)).to.deep.eql({'A': {$eq: "1/2|2+?.*?(.*)/"}})
 	})
 	
 	it("expression 5.1.1.3: (A/b eq 2) or (B/c lt 4) and ((E gt 5) or (E lt -1))", () => {
 		expect(f).to.deep.eql({$or: [{'A.b': {$eq: 2}}, {$and: [{'B.c': {$lt: 4}}, {$or: [{E: {$gt: 5}}, {E: {$lt: -1}}]}]}]})
 	})
 	
-	it("expression 5.1.1.4.1: contains(A, 'BC s2')", () => {
+	it("expression 5.1.1.4.1: contains(A, 'BC')", () => {
 		expect(f).to.deep.eql({A: /BC/gi});
 	})
 	
