@@ -4,9 +4,6 @@
   "description": "Service OData requests from a MongoDB data store",
   "main": "lib/index.js",
   "typings": "lib/index",
-  "publishConfig": {
-    "registry": "https://www.npmjs.com/package/@wandererin/odata-v4-mongodb"
-  },
   "directories": {
     "lib": "lib",
     "test": "test"
