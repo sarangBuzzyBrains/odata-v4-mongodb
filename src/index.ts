@@ -13,6 +13,7 @@ import {Token} from "@odata/parser/lib/lexer";
 export function createQuery(odataQuery: string);
 export function createQuery(odataQuery: Token);
 export function createQuery(odataQuery: string | Token) {
+  if(odataQuery == "" || !odataQuery) odataQuery = null;
   let ast: Token = <Token>(typeof odataQuery == "string" ? defaultParser.query(<string>odataQuery) : odataQuery);
   return new Visitor().Visit(ast);
 }
@@ -28,6 +29,7 @@ export function createQuery(odataQuery: string | Token) {
 export function createFilter(odataFilter: string);
 export function createFilter(odataFilter: Token);
 export function createFilter(odataFilter: string | Token): Object {
+  if(odataFilter == "" || !odataFilter) odataFilter = null;
   let context = {query: {}};
   let ast: Token = <Token>(typeof odataFilter == "string" ? defaultParser.filter(<string>odataFilter) : odataFilter);
   new Visitor().Visit(ast, context);

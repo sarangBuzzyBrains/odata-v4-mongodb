@@ -53,6 +53,16 @@ app.get("/api/products", function(req, res) {
     });
 })
 ```
+## Creates MongoDB collection, query, projection, sort, skip and limit from an OData URI string
+```javascript
+createQuery(odataQuery); // not null or empty
+```
+
+## Creates a MongoDB query object from an OData filter expression string
+```javascript
+createFilter(odataQuery); // not null or empty
+```
+
 
 ## Supported OData segments
 
@@ -62,7 +72,7 @@ Support for **$expand** is next.
 
 ### Supported $filter expressions
 
-The [OData v4 Parser](https://www.npmjs.com/package/odata-v4-parser) layer supports 100% of the specification.
+The [@odata/parser](https://github.com/Soontao/odata-v4-parser) layer supports 100% of the specification.
 The Connector is supporting basic MongoDB queries.
 
 *We are into creating a comprehensive feature availability chart for V1 release*
