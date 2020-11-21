@@ -1,8 +1,8 @@
 # OData V4 Service modules - MongoDB Connector [![Build Status](https://travis-ci.org/WandererInVoids/odata-v4-mongodb.svg?branch=master)](https://travis-ci.org/WandererInVoids/odata-v4-mongodb)
 
 Service OData v4 requests from a MongoDB data store.
-
-
+sample project that using mongodb, mongoose and express 
+https://github.com/WandererInVoids/odata-v4-mongodb-sample-express
 
 ## Synopsis
 The OData V4 MongoDB Connector provides functionality to convert the various types of OData segments
