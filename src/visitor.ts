@@ -1,6 +1,6 @@
 import * as escapeStringRegexp from "escape-string-regexp";
-import {Token} from "@odata/parser/lib/lexer";
-import {Literal} from "odata-v4-literal";
+import { Token } from "@odata/parser/lib/lexer";
+import { Literal } from "odata-v4-literal";
 
 export class Visitor {
   query: any
@@ -42,6 +42,10 @@ export class Visitor {
     }
 
     return this;
+  }
+
+  protected VisitArrayOrObject(node: Token, context: any) {
+    context.literal = [];
   }
 
   protected VisitODataUri(node: Token, context: any) {
@@ -216,7 +220,7 @@ export class Visitor {
     this.Visit(node.value, context);
     if (context.query) {
       for (var prop in context.query) {
-        context.query[prop] = {$not: context.query[prop]};
+        context.query[prop] = { $not: context.query[prop] };
       }
     }
   }
@@ -225,7 +229,7 @@ export class Visitor {
     this.Visit(node.value.left, context);
     this.Visit(node.value.right, context);
 
-    if (context.identifier) context.query[context.identifier] = {$eq: context.literal};
+    if (context.identifier) context.query[context.identifier] = { $eq: context.literal };
 
     delete context.identifier;
     delete context.literal;
@@ -235,7 +239,7 @@ export class Visitor {
     var left = this.Visit(node.value.left, context);
     var right = this.Visit(node.value.right, context);
 
-    if (context.identifier) context.query[context.identifier] = {$ne: context.literal};
+    if (context.identifier) context.query[context.identifier] = { $ne: context.literal };
     delete context.identifier;
     delete context.literal;
   }
@@ -244,7 +248,7 @@ export class Visitor {
     var left = this.Visit(node.value.left, context);
     var right = this.Visit(node.value.right, context);
 
-    if (context.identifier) context.query[context.identifier] = {$lt: context.literal};
+    if (context.identifier) context.query[context.identifier] = { $lt: context.literal };
     delete context.identifier;
     delete context.literal;
   }
@@ -253,7 +257,7 @@ export class Visitor {
     var left = this.Visit(node.value.left, context);
     var right = this.Visit(node.value.right, context);
 
-    if (context.identifier) context.query[context.identifier] = {$lte: context.literal};
+    if (context.identifier) context.query[context.identifier] = { $lte: context.literal };
     delete context.identifier;
     delete context.literal;
   }
@@ -262,7 +266,7 @@ export class Visitor {
     var left = this.Visit(node.value.left, context);
     var right = this.Visit(node.value.right, context);
 
-    if (context.identifier) context.query[context.identifier] = {$gt: context.literal};
+    if (context.identifier) context.query[context.identifier] = { $gt: context.literal };
     delete context.identifier;
     delete context.literal;
   }
@@ -271,7 +275,7 @@ export class Visitor {
     var left = this.Visit(node.value.left, context);
     var right = this.Visit(node.value.right, context);
 
-    if (context.identifier) context.query[context.identifier] = {$gte: context.literal};
+    if (context.identifier) context.query[context.identifier] = { $gte: context.literal };
     delete context.identifier;
     delete context.literal;
   }
