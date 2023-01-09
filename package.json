@@ -28,7 +28,7 @@
     "parser",
     "mongoDB"
   ],
-  "author": "JayStack, sarangBuzzyBrains",
+  "author": "Sarang, sarangBuzzyBrains",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sarangBuzzyBrains/odata-v4-mongodb/issues"
