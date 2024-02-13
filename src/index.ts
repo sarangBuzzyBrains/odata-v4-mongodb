@@ -18,6 +18,7 @@ export function createQuery(odataQuery: string | Token) {
   return new Visitor().Visit(ast);
 }
 console.log('hii');
+var x = 0;
 /**
  * Creates a MongoDB query object from an OData filter expression string
  * @param {string} odataFilter - A filter expression in OData $filter format
