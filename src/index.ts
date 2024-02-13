@@ -17,7 +17,7 @@ export function createQuery(odataQuery: string | Token) {
   let ast: Token = <Token>(typeof odataQuery == "string" ? defaultParser.query(<string>odataQuery) : odataQuery);
   return new Visitor().Visit(ast);
 }
-
+console.log('hii');
 /**
  * Creates a MongoDB query object from an OData filter expression string
  * @param {string} odataFilter - A filter expression in OData $filter format
