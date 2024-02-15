@@ -20,6 +20,7 @@ export function createQuery(odataQuery: string | Token) {
 console.log('hii');
 var x = 0;
 var y = 0;
+var z = 0;
 /**
  * Creates a MongoDB query object from an OData filter expression string
  * @param {string} odataFilter - A filter expression in OData $filter format
